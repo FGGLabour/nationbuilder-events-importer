@@ -1,0 +1,27 @@
+{
+  "name": "nationbuilder-events-importer",
+  "version": "1.0.0",
+  "description": "Imports events in CSV files into Nationbuilder",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "nationbuilder"
+  ],
+  "contributers": [
+    {
+      "name": "Anthony Green",
+      "email": "labour@anthonygreen.me",
+      "url": "http://www.twitter.com/anthonycgreen"
+    },
+    {
+      "name": "Rupert Roker"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
