@@ -1,5 +1,5 @@
 var assert = require("chai").assert;
-var matchTextToNationBuilderField = require("../../lib/matchTextToNationBuilderField");
+var convertCSVHeaderToNationBuilderField = require("../../lib/convertCSVHeaderToNationBuilderField");
 
 describe("matching text to NationBuilder fields", function() {
 
@@ -15,11 +15,15 @@ describe("matching text to NationBuilder fields", function() {
         {
           text: "Title",
           expectedMatch: "name"
+        },
+        {
+          text: "contact NAme",
+          expectedMatch: "contact.name"
         }
       ];
 
       tests.forEach(function(test) {
-        var actualMatch = matchTextToNationBuilderField(test.text);
+        var actualMatch = convertCSVHeaderToNationBuilderField(test.text);
         assert.equal(actualMatch, test.expectedMatch)
       });
 
