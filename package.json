@@ -4,7 +4,7 @@
   "description": "Imports events in CSV files into Nationbuilder",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test/*"
   },
   "keywords": [
     "nationbuilder"
@@ -23,5 +23,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "csvtojson": "^1.0.0",
+    "request": "^2.74.0"
   }
 }
