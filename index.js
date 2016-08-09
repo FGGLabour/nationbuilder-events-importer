@@ -14,12 +14,23 @@ csvToNationBuilderConverter.preProcessLine = convertHeadersToNationBuilderFields
 
 csvToNationBuilderConverter.transform = removeEmptyValues;
 
-csvToNationBuilderConverter.on("record_parsed", function(json, row, index) {
-  json = { event: json }
-  console.log(json);
+csvToNationBuilderConverter.on("record_parsed", function(data, row, index) {
+  var eventData = { "event": data }
+  console.log(eventData);
+  request({
+    url: createEventURL(),
+    method: "POST",
+    json: true,
+    headers:  { "content-type": "application/json" },
+    body: eventData
+  },function(err, res, body) {
+    console.log(err);
+    console.log(body)
+  })
+
 });
 
-require("fs").createReadStream(pathToCSV).pipe(csvToNationBuilderConverter).pipe(putToNationBuilder());
+require("fs").createReadStream(pathToCSV).pipe(csvToNationBuilderConverter); //.pipe(putToNationBuilder());
 
 function convertHeadersToNationBuilderFields(line,lineNumber){
   if (lineNumber === 1){
@@ -41,7 +52,7 @@ function removeEmptyValues(json) {
 }
 
 function putToNationBuilder() {
-  return request.put(createEventURL())
+  return request.post(createEventURL())
 }
 
 function createEventURL() {
