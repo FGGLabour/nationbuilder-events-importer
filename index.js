@@ -3,8 +3,10 @@ var Converter = require("csvtojson").Converter;
 var convertCSVHeaderToNationBuilderField = require("./lib/convertCSVHeaderToNationBuilderField")
 var config = require("./config");
 
+config.access_token = process.env.ACCESS_TOKEN;
+
 var args = process.argv.slice(2);
-var pathToCSV = args[0;]
+var pathToCSV = args[0];
 
 var csvToNationBuilderConverter = new Converter({ constructResult:false });
 
@@ -13,6 +15,7 @@ csvToNationBuilderConverter.preProcessLine = convertHeadersToNationBuilderFields
 csvToNationBuilderConverter.transform = removeEmptyValues;
 
 csvToNationBuilderConverter.on("record_parsed", function(json, row, index) {
+  json = { event: json }
   console.log(json);
 });
 
@@ -42,5 +45,5 @@ function putToNationBuilder() {
 }
 
 function createEventURL() {
-  return "https://" nation_slug + ".nationbuilder.com/api/v1/sites/" + site_slug + "/pages/events?access_token=" + access_token;
+  return "https://" + config.nation_slug + ".nationbuilder.com/api/v1/sites/" + config.site_slug + "/pages/events?access_token=" + config.access_token;
 }

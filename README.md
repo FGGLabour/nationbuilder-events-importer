@@ -6,5 +6,5 @@ Imports events from a [CSV file](https://en.wikipedia.org/wiki/Comma-separated_v
 
   from the commandline
 
-      node index.js /path/to/events.csv
+      ACCESS_TOKEN=an-access-token node index.js /path/to/events.csv
 
