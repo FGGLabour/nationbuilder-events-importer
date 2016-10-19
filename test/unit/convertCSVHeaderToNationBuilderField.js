@@ -10,21 +10,20 @@ describe("matching text to NationBuilder fields", function() {
       var tests = [
         {
           text: "Status",
-          expectedMatch: "status"
+          expectedMatch: "event.status"
         },
         {
           text: "Title",
-          expectedMatch: "name"
+          expectedMatch: "event.name"
         },
         {
           text: "contact NAme",
-          expectedMatch: "contact.name"
+          expectedMatch: "event.contact.name"
         }
       ];
 
       tests.forEach(function(test) {
-        var actualMatch = convertCSVHeaderToNationBuilderField(test.text);
-        assert.equal(actualMatch, test.expectedMatch)
+        assert.equal(convertCSVHeaderToNationBuilderField(test.text), test.expectedMatch)
       });
 
       done();
