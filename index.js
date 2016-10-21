@@ -6,7 +6,7 @@ var convertCSVHeaderToNationBuilderField = require("./lib/convertCSVHeaderToNati
 var validateEvent = require("./lib/validateEvent");
 var NationBuilder = require("./lib/NationBuilder");
 
-var nb = new NationBuilder(process.env.NATION_SLUG, process.env.SITESLUG, process.env.ACCESS_TOKEN);
+var nb = new NationBuilder(process.env.NATION_SLUG, process.env.SITE_SLUG, process.env.ACCESS_TOKEN);
 
 var pathsToCSVfiles = [].concat(process.argv.slice(2));
 
